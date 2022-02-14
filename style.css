@@ -1,0 +1,68 @@
+* {
+	font-family: monospace;
+}
+body {
+	background-color: #222;
+	text-align: center;
+	margin: 0px;
+	font-size: 0px;
+}
+textarea {
+	border: none;
+	background-color: #202020;
+	border-radius: 2px;
+	padding: 10px;
+	color: #ddd;
+	width: 400px;
+	height: 220px;
+	resize: none;
+	margin: 0px;
+}
+#paper {
+	background-color: #ba9;
+	color: #642;
+	font-family: 'Caveat', cursive;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 10px 20px;
+	margin-top: 10px;
+	box-shadow: -5px 5px 20px #000;
+	width: 400px;
+	height: 484px;
+	overflow-y: auto;
+}
+.option {
+	margin-top: 10px;
+	color: #aaa;
+	font-size: 13px;
+	text-align: left;
+}
+.block {
+	display: inline-block;
+	min-width: 450px;
+	text-align: center;
+	padding: 30px;
+	background-color: #333;
+	border: 1px solid #555;
+	vertical-align: top;
+	margin: 20px 10px;
+}
+#title {
+	margin-top: 20px;
+	color: #ccc;
+	font-size: 32px;
+	font-family: 'Architects Daughter', cursive;
+}
+#canvas {
+	margin-top: 20px;
+}
+canvas {
+	background-color: #444;
+}
+#maptitle {
+	margin-bottom: 20px;
+	color: #ccc;
+	font-size: 24px;
+	text-align: left;
+	font-family: 'Architects Daughter', cursive;
+}

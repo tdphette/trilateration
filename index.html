@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sextant Trilateration</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Tangerine&display=swap" rel="stylesheet">
+		<script type="module" src="./main.js"></script>
+	</head>
+	<body>
+		<div id="title">
+			Sextant Trilateration
+		</div>
+		<div class="block">
+			<form spellcheck="false">
+				<textarea></textarea>
+			</form>
+			<div class="option">
+				Use decimals: <input type="checkbox" name="decimals">
+			</div>
+			<div id="paper"></div>
+		</div>
+		<div class="block">
+			<div id="maptitle">Circles of equal altitude</div>
+			<canvas width="700"></canvas>
+			<div class="option">
+				Projection: <select id="projection"></select>
+			</div>
+		</div>
+  	</body>
+</html>
