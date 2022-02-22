@@ -237,14 +237,13 @@ const processStar = (star) => {
 };
 
 const mountQuery = (args) => {
-	let query = '';
+	let query = 'o=' + result.map(v => (v*RAD_TO_DEG).toFixed(3)*1).join(',');
 	let count = 0;
 	for (const { gp, arc } of args) {
 		let name = String.fromCharCode(97 + count++);
-		query += name + '=';
+		query += '&' + name + '=';
 		query += gp.map(v => (v*RAD_TO_DEG).toFixed(3)*1).join(',');
 		query += ',' + (arc*RAD_TO_DEG).toFixed(3)*1;
-		query += '&';
 	}
 	return query.substring(0, query.length - 1);
 };
@@ -293,8 +292,8 @@ const doCalculations = () => {
 	if (current_star != null) {
 		processStar(current_star);
 	}
-	updateLink3D();
 	result = trilaterate(args);
+	updateLink3D();
 	addPaperLine(`result = ${
 		strLat(result[0]*RAD_TO_DEG)
 	}, ${
@@ -313,7 +312,6 @@ const updateLink3D = () => {
 	const a = document.querySelector('#link_3d');
 	a.setAttribute('href', href);
 	a.innerText = '3D view';
-	console.log(a);
 };
 
 const project = (lat, long) => {
