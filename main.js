@@ -87,8 +87,8 @@ const parseDegrees = (str) => {
 const example = `
 
 	Star: Antares
-	Time: 2022-01-15 00:57:38 UTC-4
-	ALT: 50.868722
+	Time: 2022-01-15 00:57:38 GMT-4
+	ALT: 50.8687
 
 	Star: Arcturus
 	Time: 2022-01-15 01:07:06 UTC-4
@@ -96,7 +96,7 @@ const example = `
 
 	Star: Vega
 	Time: 2022-01-15 01:13:20 UTC-4
-	ALT: 58 15 35.4
+	ALT: 58 15.6
 
 `.trim().replace(/[\t\x20]*\n[\t\x20]*/g, '\n');
 
