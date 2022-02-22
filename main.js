@@ -236,9 +236,23 @@ const processStar = (star) => {
 	});
 };
 
+const mountQuery = (args) => {
+	let query = '';
+	let count = 0;
+	for (const { gp, arc } of args) {
+		let name = String.fromCharCode(97 + count++);
+		query += name + '=';
+		query += gp.map(v => (v*RAD_TO_DEG).toFixed(3)*1).join(',');
+		query += ',' + (arc*RAD_TO_DEG).toFixed(3)*1;
+		query += '&';
+	}
+	return query.substring(0, query.length - 1);
+};
+
 const doCalculations = () => {
 	result = null;
 	args.length = 0;
+	clearLink3D();
 	let lines = inputData.value.toLowerCase().trim().split(/\s*\n\s*/);
 	if (lines.length === 1 && lines[0] === '') {
 		lines = [];
@@ -279,12 +293,27 @@ const doCalculations = () => {
 	if (current_star != null) {
 		processStar(current_star);
 	}
+	updateLink3D();
 	result = trilaterate(args);
 	addPaperLine(`result = ${
 		strLat(result[0]*RAD_TO_DEG)
 	}, ${
 		strLong(result[1]*RAD_TO_DEG)
 	}`);
+};
+
+const clearLink3D = () => {
+	const a = document.querySelector('#link_3d');
+	a.setAttribute('href', '');
+	a.innerHTML = '';
+};
+
+const updateLink3D = () => {
+	const href = `../3d-trilateration/?${mountQuery(args)}`;
+	const a = document.querySelector('#link_3d');
+	a.setAttribute('href', href);
+	a.innerText = '3D view';
+	console.log(a);
 };
 
 const project = (lat, long) => {
