@@ -1,3 +1,5 @@
+import coordClusteredSearch from './coord-clustered-search.js';
+
 const { PI, sin, cos, asin, acos, sqrt } = Math;
 const D180 = PI;
 const D360 = PI*2;
@@ -293,6 +295,10 @@ export const findMinErrorCoord = (calcError, iterations = 40) => {
 	return currentCoord;
 };
 
+export const findMinErrorCoord3 = (calcError) => {
+	return coordClusteredSearch({ calcError });
+};
+
 export const trilaterationErrorFunction = (args) => {
 	const calcError = (coord) => {
 		let sum = 0;
@@ -308,5 +314,5 @@ export const trilaterationErrorFunction = (args) => {
 
 export const trilaterate = (args) => {
 	const calcError = trilaterationErrorFunction(args);
-	return findMinErrorCoord2(calcError);
+	return findMinErrorCoord3(calcError);
 };
