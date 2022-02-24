@@ -314,5 +314,5 @@ export const trilaterationErrorFunction = (args) => {
 
 export const trilaterate = (args) => {
 	const calcError = trilaterationErrorFunction(args);
-	return findMinErrorCoord2(calcError);
+	return findMinErrorCoord3(calcError);
 };

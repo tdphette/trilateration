@@ -11,6 +11,23 @@ const calcDistance = (a, b) => {
 const arrayRemove = (array, item) => array
 	.splice(array.indexOf(item), 1);
 
+const fixTarget = (target) => {
+	let { lat, long } = target;
+	if (lat > D90) {
+		lat = D90 - (lat - D90);
+		long += D180;
+	} else if (lat < - D90) {
+		lat = - D90 + (- lat - D90);
+		long += D180;
+	}
+	if (long < - D180 || long > D180) {
+		long = (long%D360 + D360 + D180)%D360 - D180;
+	}
+	target.lat = lat;
+	target.long = long;
+	return target;
+};
+
 class ClusteredSearchContext {
 	constructor({ calcError, maxClusters = 6, shrinkFactor = 0.75, iterations = 75 }) {
 		this.range = null;
@@ -65,7 +82,7 @@ class ClusteredSearchContext {
 			for (let j=-0.25; j<=0.25; j+=0.25) {
 				const long = j*range + long0;
 				const error = this.calcError([ lat, long ]);
-				this.addTarget({ lat, long, error });
+				this.addTarget(fixTarget({ lat, long, error }));
 			}
 		}
 	}
